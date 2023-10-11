@@ -28,6 +28,10 @@ jobs:
           arch: ${{ matrix.qtArch }}
           cache: true
           
+      - name: Install GLU
+        if: startsWith(matrix.runner, 'ubuntu')
+        run: sudo apt-get install -y libglu1-mesa-dev          
+
       - name: Build QGLViewer
         run: | 
            mkdir build
